@@ -1,22 +1,22 @@
 import * as React from "react"
 import { useEffect, useState } from "react"
 // import Event from "../src"
-// import Event from "../dist/"
-import Event from "publish-subscribe-event";
+import Event from "../dist/"
+// import Event from "publish-subscribe-event";
 const Demo = () => {
   const [reData, setReData] = useState(undefined)
-	const eventInstance = Event.getInstance()
+  const eventInstance = Event.getInstance()
+  // 接收数据函数
+  function getData(params) {
+    setReData(params)
+  }
 	useEffect(() => {
-    // 接收数据函数
-		function getData(params) {
-      setReData(params)
-		}
 		// 添加事件监听
-		eventInstance.addEventListener("my-message", getData)
+		eventInstance.addEvent("my-message", getData)
 
 		return () => {
 			// 移除事件
-			eventInstance.removeEventListener("my-message", getData)
+			eventInstance.removeEvent("my-message", getData)
 		}
 	}, [])
 	return (
@@ -25,6 +25,8 @@ const Demo = () => {
 			<div>
         接收内容： {reData}
       </div>
+      <button onClick={()=> eventInstance.removeEvent("my-message", getData)}>移除该事件</button> &nbsp;&nbsp;
+      <button onClick={()=> eventInstance.removeEventAll()}>移除所有事件</button>
 		</div>
 	)
 }
