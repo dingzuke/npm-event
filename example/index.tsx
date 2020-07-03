@@ -1,31 +1,30 @@
-import * as ReactDOM from "react-dom"
-import * as React from "react"
-import  { useEffect } from "react"
-import Event from '../src';
-const App = () => {
-    console.log(Event);
-    const eventInstance = Event.getInstance();
+import * as ReactDOM from "react-dom";
+import * as React from "react";
+import { useState } from "react";
+// import Event from "../src";
+// import Event from "../dist/index";
+import Event from "publish-subscribe-event";
+import EventListerUI from "./eventListener.ui";
+const styles = require("./index.less");
 
-    useEffect(() => {
-        function getData(params) {
-          console.log('发布内容：' + params);
-        }
-        // 添加事件监听
-        eventInstance.addEventListener('load', getData);
-    
-        return () => {
-          // 移除load事件
-          eventInstance.removeEventListener('load', getData);
-        };
-      }, []);
-    // 事件派发发布
-      function dispatchEvent() {
-        eventInstance.dispatchEvent('load', '触发load事件通知'+ new Date());
-      }
+const App = () => {
+	const [inData, setInputData] = useState(undefined);
+	const eventInstance = Event.getInstance();
+	// 事件派发发布
+	function dispatchEvent() {
+		eventInstance.dispatchEvent("my-message", inData);
+	}
 	return (
-		<div>
-			<button onClick={dispatchEvent}>点击</button>
+		<div className={styles.normal}>
+			<div className={styles.sendBox}>
+				<input
+					type="text"
+					onChange={(e) => setInputData(e.target.value)}
+				/>
+				<button onClick={dispatchEvent}>发布消息</button>
+			</div>
+			<EventListerUI />
 		</div>
-	)
-}
-ReactDOM.render(<App />, document.getElementById("app") as HTMLElement)
+	);
+};
+ReactDOM.render(<App />, document.getElementById("app") as HTMLElement);

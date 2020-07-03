@@ -21,7 +21,8 @@ const base = {
 			},
 			// 用于加载解析 less 文件
 			{
-				test: /\.less$/,
+                test: /\.less$/,
+                exclude: [/node_modules/],
 				use: [
 					{ loader: "style-loader" },
 					{
@@ -34,7 +35,7 @@ const base = {
 					},
 					{ loader: "less-loader" },
 				],
-			},
+            },
 		],
 	},
 	optimization: {
@@ -49,7 +50,7 @@ if (process.env.NODE_ENV === "development") {
 		output: {
 			path: path.join(__dirname, "example/dist"),
 			filename: "bundle.js",
-			library: "laputarenderer",
+			library: "publish-subscribe-event",
 			libraryTarget: "umd",
 		},
 		plugins: [
@@ -70,8 +71,8 @@ if (process.env.NODE_ENV === "development") {
 		output: {
 			filename: "index.js",
 			path: path.resolve(__dirname, "dist"),
-			library: "laputarenderer",
-			library: "umd",
+			library: "publish-subscribe-event",
+			libraryTarget: "umd",
 		},
 		devtool: "none",
 		// When importing a module whose path matches one of the following, just
