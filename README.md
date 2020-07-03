@@ -1,16 +1,3 @@
-## local development
-```
-$ npm i  // or yarn install
-$ yarn start
-```
-#### npm publish
-```
-$ npm login
-$ yarn build
-$ // change package.json => "version" : "1.0.0"
-$ npm publish
-```
-
 ## publish-subscribe-event
 ### Install
 ```

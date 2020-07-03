@@ -1,8 +1,8 @@
 import * as ReactDOM from "react-dom";
 import * as React from "react";
 import { useState } from "react";
-// import Event from "../src";
-import Event from "../dist/index";
+import Event from "../src";
+// import Event from "../dist/index";
 // import Event from "publish-subscribe-event";
 import EventListerUI from "./eventListener.ui";
 const styles = require("./index.less");

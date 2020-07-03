@@ -5,8 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const base = {
-	mode: process.env.NODE_ENV === "production" ? "production" : "development",
-	devtool: "cheap-module-source-map",
+	mode: process.env.NODE_ENV === "production" ? "production" : "development",	
 	resolve: {
 		// Add '.ts' and '.tsx' as resolvable extensions.
 		extensions: [".ts", ".tsx", ".js", ".json"],
@@ -46,6 +45,7 @@ const base = {
 if (process.env.NODE_ENV === "development") {
 	tempConfig = {
 		...base,
+		devtool: "eval‐source‐map",
 		entry: path.join(__dirname, "example/index.tsx"),
 		output: {
 			path: path.join(__dirname, "example/dist"),
@@ -67,6 +67,7 @@ if (process.env.NODE_ENV === "development") {
 } else {
 	tempConfig = {
 		...base,
+		devtool: "cheap-module-source-map",
 		entry: "./src/index.ts",
 		output: {
 			filename: "index.js",

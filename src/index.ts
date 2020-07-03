@@ -13,7 +13,7 @@ class Event {
 	 */
 	private static _instance: Event;
 	/**
-	 * event container 
+	 * event container
 	 */
 	private handlers: Ihandlers = {};
 	/**
@@ -33,11 +33,10 @@ class Event {
 
 	/**
 	 * Register new events
-	 * @param type 
-	 * @param handler 
+	 * @param type
+	 * @param handler
 	 */
 	public addEvent(type: string, handler: Function) {
-
 		if (!(type in this.handlers)) {
 			this.handlers[type] = [];
 		}
@@ -47,11 +46,10 @@ class Event {
 
 	/**
 	 * dispatch event
-	 * @param type 
-	 * @param params 
+	 * @param type
+	 * @param params
 	 */
 	public dispatchEvent(type: string, ...params: any) {
-
 		if (!(type in this.handlers)) {
 			return new Error("unregistered event");
 		}
@@ -63,8 +61,8 @@ class Event {
 
 	/**
 	 * Event remove
-	 * @param type 
-	 * @param handler 
+	 * @param type
+	 * @param handler
 	 */
 	public removeEvent(type: string, handler: Function) {
 		if (!(type in this.handlers)) {
@@ -73,9 +71,8 @@ class Event {
 		if (!handler) {
 			delete this.handlers[type];
 		} else {
-			this.handlers[type] = this.handlers[type].filter(
-				(ele: Function) => ele !== handler
-			);
+			this.handlers[type] = this.handlers[type].filter((Fn: Function) => {Fn !== handler});
+
 			if (this.handlers[type].length === 0) {
 				delete this.handlers[type];
 			}
@@ -85,7 +82,7 @@ class Event {
 	 * Remove all events
 	 */
 	public removeEventAll() {
-		this.handlers = {}
+		this.handlers = {};
 	}
 }
 
