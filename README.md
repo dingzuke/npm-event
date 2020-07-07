@@ -1,4 +1,6 @@
+[![NPM version](https://img.shields.io/npm/v/publish-subscribe-event.svg)](https://www.npmjs.com/package/publish-subscribe-event)
 ## publish-subscribe-event
+
 ### Install
 ```
 # with npm 

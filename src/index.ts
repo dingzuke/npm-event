@@ -15,7 +15,7 @@ class Event {
 	/**
 	 * event container
 	 */
-	private handlers: Ihandlers = {};
+	public handlers: Ihandlers = {};
 	/**
 	 * forbid new Event
 	 */
@@ -81,7 +81,7 @@ class Event {
 	/**
 	 * Remove all events
 	 */
-	public removeEventAlls() {
+	public removeEventAll() {
 		this.handlers = {};
 	}
 }
