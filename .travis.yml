@@ -1,29 +1,14 @@
 language: node_js
+
 node_js:
-- stable
-script: npm run test
+  - stable
 
-jobs:
- include:
-   - stage: test
-     script:
-       - node --version
-       - npm --version
-       - echo "Testing Started ..."
-       - npm run test
-       - echo "Testing Finished."
+branches:
+  only:
+    - master
 
-   - stage: deploy
-     script:
-       - echo "NPM Deploying Started ..."
-       - npm version
-       - npm run build
-       - echo "NPM Building Finished."
+install:
+  - npm install
 
-     deploy:
-       provider: npm
-       email: 675129745@qq.com
-       api_key: "$NPM_TOKEN"
-       skip_cleanup: true
-       on:
-         all_branches: true
+script:
+  - npm run test
