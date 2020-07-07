@@ -1,15 +1,7 @@
-language : node_js
+language: node_js
 node_js:
- - "10"
- - "9"
-install:
-- npm install
-os:
- - linux
-
-stages:
- - run test
- - name: deploy
+- stable
+script: npm run test
 
 jobs:
  include:
