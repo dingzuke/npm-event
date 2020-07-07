@@ -12,3 +12,11 @@ install:
 
 script:
   - npm run test
+
+deploy:
+    provider: npm
+    email: 675129745@qq.com
+    api_key: "$NPM_TOKEN"
+    skip_cleanup: true
+    on:
+        all_branches: true
