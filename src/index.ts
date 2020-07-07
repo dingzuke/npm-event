@@ -81,7 +81,7 @@ class Event {
 	/**
 	 * Remove all events
 	 */
-	public removeEventAll() {
+	public removeEventAlls() {
 		this.handlers = {};
 	}
 }

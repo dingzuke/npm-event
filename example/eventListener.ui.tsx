@@ -31,7 +31,7 @@ const Demo = () => {
 				移除该事件
 			</button>
 			&nbsp;&nbsp;
-			<button onClick={() => eventInstance.removeEventAll()}>
+			<button onClick={() => eventInstance.removeEventAlls()}>
 				移除所有事件
 			</button>
 		</div>
